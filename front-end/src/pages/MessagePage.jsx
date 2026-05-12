@@ -16,10 +16,9 @@ const MessagePage = ({ onAddMessage }) => {
     setStatus({ type: '', text: '' });
 
     try {
-      // Backend API URL (Nodemailer endpoint)
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-      
-      const response = await fetch(`${API_URL}/api/contact`, {
+      // Use Vercel Serverless Function instead of external backend
+      // No API_URL needed - Vercel handles it automatically
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
